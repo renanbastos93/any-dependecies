@@ -2,7 +2,7 @@
 
 FILE=$1
 LANGUAGE=$2
-MYPATH="/mnt/c/projetos"
+MYPATH=$3
 
 function installNodejsDependecies {
     npm install >> ../nodejs-dependecies-log.txt
@@ -10,8 +10,8 @@ function installNodejsDependecies {
 
 case $LANGUAGE in
     "node" )
-        for DIR in $(ls -d $pasta*/); do
-            cd $MYPATH"/"$DIR
+        for DIR in $(ls -d $MYPATH*); do
+            cd $DIR
             if [ -f $FILE ]; then
                 echo "Open "$DIR >> ../nodejs-dependecies-log.txt
                 installNodejsDependecies
